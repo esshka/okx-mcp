@@ -8,6 +8,39 @@ This MCP server connects to the OKX API to provide cryptocurrency price informat
 
 ### Tools
 
+#### `get_candlesticks`
+
+Retrieves historical candlestick (OHLCV) data for any instrument on OKX.
+
+- **Input**:
+  - `instrument`: String (required) - Instrument ID (e.g. "BTC-USDT")
+  - `bar`: String (optional) - Time interval (e.g. "1m", "5m", "1H", "1D"), default "1m"
+  - `limit`: Number (optional) - Number of candlesticks to return (max 100), default 100
+- **Output**: Array of JSON objects, each containing:
+  - `timestamp`: ISO timestamp of the candlestick
+  - `open`: Opening price
+  - `high`: Highest price
+  - `low`: Lowest price
+  - `close`: Closing price
+  - `volume`: Trading volume
+  - `volumeCurrency`: Volume in currency terms
+
+Example usage:
+
+```json
+[
+  {
+    "timestamp": "2025-03-07T17:00:00.000Z",
+    "open": "87242.8",
+    "high": "87580.2",
+    "low": "86548.0",
+    "close": "87191.8",
+    "volume": "455.72150427",
+    "volumeCurrency": "39661166.242091111"
+  }
+]
+```
+
 #### `get_price`
 
 Fetches the latest price and 24-hour market data for any instrument on OKX.
